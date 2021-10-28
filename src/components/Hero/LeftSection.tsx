@@ -1,20 +1,16 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { RiAddFill } from "react-icons/ri";
 import LadyAnimation from "./LadyAnimation";
 import BlobAnimationGroup from "./BlobAnimationGroup";
 import SideProducts from "./SideProducts";
 import ProductDetails from "./ProductDetails";
 import ProductHeading from "./ProductHeading";
+import ShowProductButton from "../Buttons/ShowProductButton";
 
-interface ILeftSectionProps {
-  triggerAnimation: () => void;
-  isVisible: boolean;
-}
-
-function LeftSection({ isVisible, triggerAnimation }: ILeftSectionProps) {
+function LeftSection() {
   return (
     <AnimatePresence>
       <motion.div
+        key="LeftSectionComponent"
         className="relative w-full flex justify-around border-r-2 border-gray-200 z-0 overflow-hidden"
         initial={{ borderRightColor: "#ECFDF5" }}
         animate={{ borderRightColor: "#E5E7EB" }}
@@ -22,8 +18,8 @@ function LeftSection({ isVisible, triggerAnimation }: ILeftSectionProps) {
         exit={{ borderRight: 0 }}
       >
         <AnimatePresence>
-          <BlobAnimationGroup />
-          <LadyAnimation />
+          <BlobAnimationGroup key="BlobAnimationGroup" />
+          <LadyAnimation key="LadyAnimation" />
         </AnimatePresence>
         <motion.div
           className="flex justify-start items-center space-x-12 mx-16 z-10 mr-auto"
@@ -33,24 +29,9 @@ function LeftSection({ isVisible, triggerAnimation }: ILeftSectionProps) {
             <ProductHeading />
             <ProductDetails />
           </motion.div>
-          <div>
-            <motion.button
-              className="mt-24 px-3 py-3 rounded-full bg-black text-white"
-              onClick={() => {
-                triggerAnimation?.();
-              }}
-              initial={{ opacity: 0 }}
-              animate={isVisible ? { opacity: 1 } : { opacity: 0 }}
-              transition={
-                isVisible ? { duration: 1, delay: 0.3 } : { duration: 0.1 }
-              }
-              exit={{ opacity: 0 }}
-            >
-              <RiAddFill className="text-xl" />
-            </motion.button>
-          </div>
+          <ShowProductButton />
         </motion.div>
-        <SideProducts />
+        <SideProducts key="SideProducts" />
       </motion.div>
     </AnimatePresence>
   );

@@ -1,5 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
+import clsx from "clsx";
 import Image from "next/image";
+import { useState } from "react";
 import { RiAddFill } from "react-icons/ri";
 import { Blob1, Blob2 } from "../svg";
 
@@ -10,24 +12,36 @@ interface ILeftSectionProps {
 
 const PRODUCT_IMAGES = [
   {
+    name: "main_lady_1",
     imagePath: "/main_lady_1.png",
     delay: 0.4,
   },
   {
+    name: "main_lady_2",
     imagePath: "/main_lady_2.png",
     delay: 0.6,
   },
   {
+    name: "main_lady_3",
     imagePath: "/main_lady_3.png",
     delay: 0.8,
   },
   {
+    name: "main_lady_4",
     imagePath: "/main_lady_4.png",
     delay: 1.0,
   },
 ];
 
 function LeftSection({ isVisible, triggerAnimation }: ILeftSectionProps) {
+  const sizeOptions = ["S", "M", "L"] as const;
+  const [size, setSize] = useState<"S" | "M" | "L">("S");
+  const [currentImage, setCurrentImage] = useState({
+    name: "leftSectionImage",
+    imagePath: "/leftSectionImage.png",
+    delay: 0,
+  });
+
   return (
     <AnimatePresence>
       <motion.div
@@ -67,7 +81,7 @@ function LeftSection({ isVisible, triggerAnimation }: ILeftSectionProps) {
             <Blob2 className="h-full" />
           </motion.div>
           <motion.div
-            key="mainLadyImage"
+            key={currentImage.name}
             className="absolute -bottom-24 z-10"
             initial={{ x: "-400px", opacity: 0 }}
             animate={
@@ -78,10 +92,11 @@ function LeftSection({ isVisible, triggerAnimation }: ILeftSectionProps) {
           >
             <Image
               className="z-20"
-              src="/leftSectionImage.png"
+              src={currentImage.imagePath}
               alt="lady in olive dress"
               width="400"
               height="600"
+              layout="intrinsic"
               priority
             />
           </motion.div>
@@ -156,12 +171,16 @@ function LeftSection({ isVisible, triggerAnimation }: ILeftSectionProps) {
                 >
                   <label className="text-base">SELECT SIZE</label>
                   <div className="space-x-2">
-                    {/* TODO: Add state like disabled/selected and clsx */}
-                    {["S", "M", "L"].map((item) => (
+                    {sizeOptions.map((item) => (
                       <button
                         key={item}
-                        className="w-8 h-8 rounded-full border-2 border-black text-sm"
-                        onClick={() => {}}
+                        className={clsx(
+                          "w-8 h-8 rounded-full border-2 border-black text-sm",
+                          size === item ? "opacity-100" : "opacity-40"
+                        )}
+                        onClick={() => {
+                          setSize(item);
+                        }}
                       >
                         {item}
                       </button>
@@ -182,11 +201,12 @@ function LeftSection({ isVisible, triggerAnimation }: ILeftSectionProps) {
                   {PRODUCT_IMAGES.map((item) => (
                     <motion.div
                       key={item.imagePath}
-                      className="bg-green-100 w-20 h-32 overflow-hidden"
+                      className="bg-green-100 w-20 h-32 overflow-hidden cursor-pointer"
                       initial={{ x: 200, opacity: 0 }}
                       animate={{ x: 0, opacity: 1 }}
                       transition={{ duration: 0.5, delay: item.delay }}
                       exit={{ x: -200, opacity: 0 }}
+                      onClick={() => setCurrentImage(item)}
                     >
                       <Image
                         src={item.imagePath}

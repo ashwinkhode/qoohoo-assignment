@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { RiFacebookFill, RiInstagramLine, RiTwitterFill } from "react-icons/ri";
 import { useButtonAnimation } from "../../context/ButtonAnimationContext";
+import ShowSizeButton from "../Buttons/FooterButton";
 
 function Footer() {
   const { isVisible } = useButtonAnimation();
@@ -50,17 +51,8 @@ function Footer() {
               </Link>
             </motion.div>
           </motion.div>
-          <div className="w-1/5 min-h-full flex justify-center items-center bg-green-50">
-            <motion.button
-              className="flex justify-center items-center flex-1 font-bold text-center bg-white h-full"
-              initial={{ opacity: 0, x: 400 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1 }}
-              exit={{ opacity: 0, x: 0 }}
-            >
-              SIZE GUIDE &gt;
-            </motion.button>
-          </div>
+
+          <ShowSizeButton />
         </>
       )}
     </footer>

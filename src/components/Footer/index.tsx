@@ -17,7 +17,7 @@ function Footer() {
             exit={{ borderRightColor: "#ECFDF5" }}
           >
             <motion.div
-              className=" px-1.5 py-1 rounded border-2 border-gray-200"
+              className=" px-1.5 py-1 rounded border-2 border-gray-200 cursor-pointer"
               initial={{ x: 50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 1 }}
@@ -28,7 +28,7 @@ function Footer() {
               </Link>
             </motion.div>
             <motion.div
-              className=" px-1.5 py-1 rounded border-2 border-gray-200"
+              className=" px-1.5 py-1 rounded border-2 border-gray-200 cursor-pointer"
               initial={{ x: 50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 1, delay: 0.1 }}
@@ -39,7 +39,7 @@ function Footer() {
               </Link>
             </motion.div>
             <motion.div
-              className=" px-1.5 py-1 rounded border-2 border-gray-200"
+              className=" px-1.5 py-1 rounded border-2 border-gray-200 cursor-pointer"
               initial={{ x: 50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 1, delay: 0.2 }}
@@ -51,7 +51,7 @@ function Footer() {
             </motion.div>
           </motion.div>
           <div className="w-1/5 min-h-full flex justify-center items-center bg-green-50">
-            <motion.div
+            <motion.button
               className="flex justify-center items-center flex-1 font-bold text-center bg-white h-full"
               initial={{ opacity: 0, x: 400 }}
               animate={{ opacity: 1, x: 0 }}
@@ -59,7 +59,7 @@ function Footer() {
               exit={{ opacity: 0, x: 0 }}
             >
               SIZE GUIDE &gt;
-            </motion.div>
+            </motion.button>
           </div>
         </>
       )}

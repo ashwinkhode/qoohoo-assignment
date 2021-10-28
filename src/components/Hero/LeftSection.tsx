@@ -33,6 +33,19 @@ const PRODUCT_IMAGES = [
   },
 ];
 
+const SIDE_PRODUCTS = [
+  {
+    name: "Medium Crossbody Bag",
+    imagePath: "/purse.png",
+    price: 34,
+  },
+  {
+    name: "Women Black Flats Sandal",
+    imagePath: "/sandals.png",
+    price: 18,
+  },
+];
+
 function LeftSection({ isVisible, triggerAnimation }: ILeftSectionProps) {
   const sizeOptions = ["S", "M", "L"] as const;
   const [size, setSize] = useState<"S" | "M" | "L">("S");
@@ -106,14 +119,14 @@ function LeftSection({ isVisible, triggerAnimation }: ILeftSectionProps) {
           layout
         >
           <motion.div className="text-4xl font-bold mt-24 space-y-8" layout>
-            <div>
+            <div className="uppercase">
               <motion.h1
                 initial={{ x: -400, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ duration: 1 }}
                 exit={{ x: 400, opacity: 0 }}
               >
-                TIED GREEN <br />
+                Casual Sleeves <br />
               </motion.h1>
               <motion.h1
                 initial={{ x: 200, opacity: 0 }}
@@ -121,7 +134,7 @@ function LeftSection({ isVisible, triggerAnimation }: ILeftSectionProps) {
                 transition={{ duration: 1 }}
                 exit={{ x: -200, opacity: 0 }}
               >
-                V-NECK SHIRT
+                Green Top
               </motion.h1>
             </div>
             {!isVisible && (
@@ -148,8 +161,8 @@ function LeftSection({ isVisible, triggerAnimation }: ILeftSectionProps) {
                     transition={{ duration: 0.5, delay: 0.2 }}
                     exit={{ y: -200, opacity: 0 }}
                   >
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Earum, modi? Tempore alias dolores architecto
+                    Casual Regular Solid Women Green Top with round collar. Long
+                    Sleeves without cuff. Made with Polycotton. Highly Durable.
                   </motion.p>
                   <motion.button
                     className="py-7 px-6 rounded-full bg-red-600 bg-opacity-90 text-white text-base font-bold"
@@ -243,25 +256,25 @@ function LeftSection({ isVisible, triggerAnimation }: ILeftSectionProps) {
         {isVisible && (
           <motion.div
             key="product card"
-            className="w-1/4 flex space-y-8 flex-col justify-center z-10"
+            className="w-1/4 flex space-y-8 flex-col justify-center items-stretch z-10"
             initial={{ y: 400, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1 }}
             exit={{ y: -400, opacity: 0 }}
           >
-            {[1, 2].map((item) => (
+            {SIDE_PRODUCTS.map((item) => (
               <motion.article
-                key={item}
-                className="mx-auto bg-white flex justify-between items-stretch rounded-2xl shadow-2xl cursor-pointer"
+                key={item.name}
+                className="mx-auto max-w-[160px] bg-white flex justify-between items-stretch rounded-2xl shadow-2xl cursor-pointer"
               >
                 <div className="w-1/2 p-4 space-y-2">
-                  <h1 className="text-xs">Medium Crossbody Bag</h1>
-                  <p className="text-xs font-bold">$34</p>
+                  <h1 className="text-xs capitalize">{item.name}</h1>
+                  <p className="text-xs font-bold">$ {item.price}</p>
                 </div>
                 <div className="relative w-1/2">
                   <Image
-                    src="/purse.png"
-                    alt="yellow purse"
+                    src={item.imagePath}
+                    alt={item.name}
                     layout="fill"
                     objectFit="contain"
                     priority

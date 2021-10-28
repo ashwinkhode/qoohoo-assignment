@@ -93,6 +93,7 @@ export default function Home() {
               alt="lady in orange dress"
               width="600"
               height="600"
+              priority
             />
           </div>
           <div className="w-2/4 flex justify-start items-center space-x-12 mx-16">
@@ -124,6 +125,7 @@ export default function Home() {
                     alt="yellow purse"
                     layout="fill"
                     objectFit="contain"
+                    priority
                   />
                 </div>
               </article>
@@ -147,6 +149,7 @@ export default function Home() {
               layout="fixed"
               objectPosition="top center"
               className="z-10"
+              priority
             />
             <div className="absolute top-0 left-1/2 bg-[#DECAC9] w-full h-full z-0"></div>
           </div>

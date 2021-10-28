@@ -8,6 +8,25 @@ interface ILeftSectionProps {
   isVisible: boolean;
 }
 
+const PRODUCT_IMAGES = [
+  {
+    imagePath: "/main_lady_1.png",
+    delay: 0.4,
+  },
+  {
+    imagePath: "/main_lady_2.png",
+    delay: 0.6,
+  },
+  {
+    imagePath: "/main_lady_3.png",
+    delay: 0.8,
+  },
+  {
+    imagePath: "/main_lady_4.png",
+    delay: 1.0,
+  },
+];
+
 function LeftSection({ isVisible, triggerAnimation }: ILeftSectionProps) {
   return (
     <AnimatePresence>
@@ -49,19 +68,21 @@ function LeftSection({ isVisible, triggerAnimation }: ILeftSectionProps) {
           </motion.div>
           <motion.div
             key="mainLadyImage"
-            className="absolute -bottom-24 z-0"
+            className="absolute -bottom-24 z-10"
             initial={{ x: "-400px", opacity: 0 }}
             animate={
               isVisible ? { x: "0", opacity: 1 } : { x: "400px", opacity: 1 }
             }
-            transition={{ duration: 1 }}
+            transition={{ duration: 1, bounce: 0 }}
             exit={{ x: "400px", opacity: 0 }}
           >
             <Image
-              src="/main_lady.png"
-              alt="lady in orange dress"
-              width="600"
+              className="z-20"
+              src="/leftSectionImage.png"
+              alt="lady in olive dress"
+              width="400"
               height="600"
+              priority
             />
           </motion.div>
         </AnimatePresence>
@@ -158,21 +179,23 @@ function LeftSection({ isVisible, triggerAnimation }: ILeftSectionProps) {
                   }}
                   exit={{ y: -200, opacity: 0 }}
                 >
-                  {[0.4, 0.6, 0.8, 1.0].map((item) => (
+                  {PRODUCT_IMAGES.map((item) => (
                     <motion.div
-                      key={item}
-                      className="bg-green-100 w-32 h-32 overflow-hidden"
+                      key={item.imagePath}
+                      className="bg-green-100 w-20 h-32 overflow-hidden"
                       initial={{ x: 200, opacity: 0 }}
                       animate={{ x: 0, opacity: 1 }}
-                      transition={{ duration: 0.5, delay: item }}
+                      transition={{ duration: 0.5, delay: item.delay }}
                       exit={{ x: -200, opacity: 0 }}
                     >
                       <Image
-                        src="/main_lady.png"
-                        alt="lady"
-                        width="128"
+                        src={item.imagePath}
+                        alt="product images"
+                        width="84"
                         height="128"
-                        objectFit="fill"
+                        objectFit="cover"
+                        objectPosition="top center"
+                        priority
                       />
                     </motion.div>
                   ))}
@@ -221,6 +244,7 @@ function LeftSection({ isVisible, triggerAnimation }: ILeftSectionProps) {
                     alt="yellow purse"
                     layout="fill"
                     objectFit="contain"
+                    priority
                   />
                 </div>
               </motion.article>

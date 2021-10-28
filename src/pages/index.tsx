@@ -7,7 +7,7 @@ import { useButtonAnimation } from "../context/ButtonAnimation";
 function HomePage() {
   const { isVisible } = useButtonAnimation();
   return (
-    <div className="min-w-full min-h-screen flex flex-col justify-between items-stretch overflow-hidden">
+    <div className="relative min-w-full min-h-screen flex flex-col justify-between items-stretch overflow-hidden z-10">
       <AnimatePresence>
         <Header key="header" />
 

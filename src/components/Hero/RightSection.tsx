@@ -36,13 +36,13 @@ function RightSection() {
             SUMMER 2020
           </div>
           <Image
-            src="/summer_lady.png"
+            src="/rightSectionImage.png"
             alt="summer lady"
             width="400"
             height="500"
             layout="fixed"
             objectPosition="top center"
-            className="z-10"
+            className="!left-24 z-[5]"
           />
           <div className="absolute top-0 left-1/2 bg-[#DECAC9] w-full h-full z-0"></div>
         </motion.div>

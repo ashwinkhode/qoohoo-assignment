@@ -2,7 +2,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";
 import { AnimatePresence } from "framer-motion";
-import { useButtonAnimation } from "../context/ButtonAnimation";
+import { useButtonAnimation } from "../context/ButtonAnimationContext";
 
 function HomePage() {
   const { isVisible } = useButtonAnimation();

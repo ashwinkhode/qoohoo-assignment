@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { RiFacebookFill, RiInstagramLine, RiTwitterFill } from "react-icons/ri";
-import { useButtonAnimation } from "../../context/ButtonAnimation";
+import { useButtonAnimation } from "../../context/ButtonAnimationContext";
 
 function Footer() {
   const { isVisible } = useButtonAnimation();

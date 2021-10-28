@@ -31,7 +31,7 @@ function ButtonProvider({ children }: { children: ReactNode }) {
 function useButtonAnimation() {
   const context = useContext(ButtonAnimationContext);
   if (context === undefined) {
-    console.error("useCount must be used within a CountProvider");
+    console.error("useButtonAnimation must be used within a CountProvider");
   }
   return context;
 }

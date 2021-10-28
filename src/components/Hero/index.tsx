@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useButtonAnimation } from "../../context/ButtonAnimation";
+import { useButtonAnimation } from "../../context/ButtonAnimationContext";
 import LeftSection from "./LeftSection";
 import RightSection from "./RightSection";
 

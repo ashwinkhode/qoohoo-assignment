@@ -1,9 +1,9 @@
 import Head from "next/head";
 import { AppProps } from "next/app";
-import "../styles/index.css";
 import { useRouter } from "next/router";
 import { AnimatePresence } from "framer-motion";
-import { ButtonProvider } from "../context/ButtonAnimation";
+import { ButtonProvider } from "../context/ButtonAnimationContext";
+import "../styles/index.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();

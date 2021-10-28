@@ -7,7 +7,7 @@ import {
   RiUserLine,
 } from "react-icons/ri";
 import { IoLogoDeviantart } from "react-icons/io5";
-import { useButtonAnimation } from "../../context/ButtonAnimation";
+import { useButtonAnimation } from "../../context/ButtonAnimationContext";
 
 const HEADER_LINKS = [
   {

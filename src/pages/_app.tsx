@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { AnimatePresence } from "framer-motion";
 import { ButtonProvider } from "../context/ButtonAnimationContext";
 import "../styles/index.css";
+import { ProductImageProvider } from "../context/ProductImageContext";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -15,7 +16,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <AnimatePresence>
         <ButtonProvider>
-          <Component key={router.pathname} {...pageProps} />
+          <ProductImageProvider>
+            <Component key={router.pathname} {...pageProps} />
+          </ProductImageProvider>
         </ButtonProvider>
       </AnimatePresence>
     </>

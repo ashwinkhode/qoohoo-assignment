@@ -1,10 +1,8 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useButtonAnimation } from "../../context/ButtonAnimationContext";
 import LeftSection from "./LeftSection";
 import RightSection from "./RightSection";
 
 function Hero() {
-  const { isVisible, setVisibility } = useButtonAnimation();
   return (
     <motion.main
       className="relative flex-1 flex justify-between items-stretch bg-green-50 overflow-hidden"
@@ -15,12 +13,8 @@ function Hero() {
       layout
     >
       <AnimatePresence>
-        <LeftSection
-          key="LeftSection"
-          isVisible={isVisible}
-          triggerAnimation={() => setVisibility(!isVisible)}
-        />
-        {isVisible && <RightSection key="RightSection" />}
+        <LeftSection key="LeftSection" />
+        <RightSection key="RightSection" />
       </AnimatePresence>
     </motion.main>
   );

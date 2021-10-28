@@ -9,3 +9,7 @@
 }
 
 @import "tailwindcss/utilities";
+
+body {
+  @apply bg-green-50;
+}
